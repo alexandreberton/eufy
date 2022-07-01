@@ -15,14 +15,6 @@
 */
 
 /* Permet la réorganisation des commandes dans l'équipement */
-$("#table_cmd").sortable({
-  axis: "y",
-  cursor: "move",
-  items: ".cmd",
-  placeholder: "ui-state-highlight",
-  tolerance: "intersect",
-  forcePlaceholderSize: true
-})
 
 /* Fonction permettant l'affichage des commandes dans l'équipement */
 function addCmdToTable(_cmd) {
@@ -82,3 +74,38 @@ function addCmdToTable(_cmd) {
     }
   })
 }
+
+
+$('#bt_syncEufy').on('click', function () {
+  $.ajax({
+      type: "POST",
+      url: "plugins/eufy/core/ajax/eufy.ajax.php",
+      data: {
+          action: "sync",
+      },
+      dataType: 'json',
+      error: function (request, status, error) {
+          handleAjaxError(request, status, error);
+      },
+      success: function (data) {
+          if (data.state != 'ok') {
+              $('#div_alert').showAlert({ message: data.result, level: 'danger' });
+              return;
+          }
+          $('#div_alert').showAlert({ message: '{{Synchronisation réussie.}}', level: 'success' });
+          setTimeout(function () {
+              window.location.replace("index.php?v=d&m=eufy&p=eufy");
+          }, 10000);
+      }
+  });
+});
+
+
+$("#table_cmd").sortable({
+  axis: "y",
+  cursor: "move",
+  items: ".cmd",
+  placeholder: "ui-state-highlight",
+  tolerance: "intersect",
+  forcePlaceholderSize: true
+})

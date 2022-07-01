@@ -22,6 +22,12 @@ try {
     if (!isConnect('admin')) {
         throw new Exception(__('401 - Accès non autorisé', __FILE__));
     }
+	
+	if (init('action') == 'sync') {
+		$params = array('command' => 'getDevices');
+    eufy::sendToDaemon($params);
+    ajax::success();
+}
 
   /* Fonction permettant l'envoi de l'entête 'Content-Type: application/json'
     En V3 : indiquer l'argument 'true' pour contrôler le token d'accès Jeedom
