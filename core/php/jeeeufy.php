@@ -22,9 +22,14 @@ try {
             eufy::syncDevices($result['devices']);
         } 
         if ($result['type'] == 'event') {
-            log::add('eufy', 'debug', 'Event received from daemon: serialNumber: '. $result['serialNumber'] . ', property: ' . $result['property'] . ', value: ' . $result['value']);
+            log::add('eufy', 'debug', 'Event received from daemon: serialNumber: '. $result['serialNumber'] . ', property: ' . $result['property'] . ', value: ' . $result['value']);          
             
-            eufy::updateDeviceInfo($result['serialNumber'], $result['property'], $result['value']);
+            if(!isset($result['subtype']))
+                eufy::updateDeviceInfo($result['serialNumber'], $result['property'], $result['value']);
+            else{
+                if($result['subtype'] == 'properties')
+                eufy::updateDeviceInfoForProperties($result['serialNumber'], $result['property'], $result['value']);
+            }
         }
     }
 } 

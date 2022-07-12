@@ -171,8 +171,13 @@ def parseResultMessage(msg):
 
 		_devices = msg['result']['state']['devices']
 		logging.debug(str(_devices))
-	else:
-		logging.warning('Unsupported Result message received')
+		return
+	if "properties" in result:
+		logging.debug('Properties message received')
+		for prop in result['properties']:
+			_jeedomCom.send_change_immediate({'type': 'event', 'subtype': 'properties', 'serialNumber': result['serialNumber'], 'property': prop, 'value':  result['properties'][prop]})
+
+	logging.warning('Unsupported Result message received')
 
 def parseEventMessage(msg):
 	evtMsg = msg['event']

@@ -1,265 +1,156 @@
 [
-    {
-       "logicalId": "model",
-        "name": "Model",
-        "type": "info",
-        "subtype": "string",
-        "isVisible": 0,
-        "generic_type": "DONT"
-    },
-    {
-        "logicalId": "name",
-         "name": "Nom",
-         "type": "info",
-         "subtype": "string",
-         "isVisible": 0,
-         "generic_type": "DONT"
-    },
-    {
-        "logicalId": "serialNumber",
-         "name": "Numéro de série",
-         "type": "info",
-         "subtype": "string",
-         "isVisible": 0,
-         "generic_type": "DONT"
-    },
-    {
-        "logicalId": "hardwareVersion",
-         "name": "Version hardware",
-         "type": "info",
-         "subtype": "string",
-         "isVisible": 0,
-         "generic_type": "DONT"
-    },
-    {
-        "logicalId": "softwareVersion",
-         "name": "Version du logiciel",
-         "type": "info",
-         "subtype": "string",
-         "isVisible": 0,
-         "generic_type": "DONT"
-    },
-    {
-        "logicalId": "enabled",
-         "name": "Activée",
-         "type": "info",
-         "subtype": "binary",
-         "isVisible": 0,
-         "generic_type": "DONT"
-    },
-    {
-        "logicalId": "lastChargingDays",
-         "name": "Jours depuis la dernière recharge",
-         "type": "info",
-         "subtype": "numeric",
-         "isVisible": 0,
-         "isHistorized": 0,
-         "unite": "jours",
-         "generic_type": "GENERIC_INFO",
-         "template": {
-             "dashboard": "line",
-             "mobile": "line"
-         }
-    },
-    {
-        "logicalId": "lastChargingTotalEvents",
-         "name": "Evènements depuis la dernière recharge",
-         "type": "info",
-         "subtype": "numeric",
-         "isVisible": 0,
-         "isHistorized": 0,
-         "unite": "évènements",
-         "generic_type": "GENERIC_INFO",
-         "template": {
-             "dashboard": "line",
-             "mobile": "line"
-         }
-    },
-    {
-        "logicalId": "lastChargingRecordsEvents",
-         "name": "Evènements enregistrés depuis la dernière recharge",
-         "type": "info",
-         "subtype": "numeric",
-         "isVisible": 0,
-         "isHistorized": 0,
-         "unite": "évènements",
-         "generic_type": "GENERIC_INFO",
-         "template": {
-             "dashboard": "line",
-             "mobile": "line"
-         }
-    },
-    {
-        "logicalId": "lastChargingFalseEvents",
-         "name": "Faux positif depuis la dernière recharge",
-         "type": "info",
-         "subtype": "numeric",
-         "isVisible": 0,
-         "isHistorized": 0,
-         "unite": "évènements",
-         "generic_type": "GENERIC_INFO",
-         "template": {
-             "dashboard": "line",
-             "mobile": "line"
-         }
-    },
-    {
-        "logicalId": "batteryUsageLastWeek",
-         "name": "Batterie consommée la dernière semaine",
-         "type": "info",
-         "subtype": "numeric",
-         "isVisible": 0,
-         "isHistorized": 0,
-         "generic_type": "GENERIC_INFO",
-         "template": {
-             "dashboard": "line",
-             "mobile": "line"
-         }
-    },
-    {
-        "logicalId": "motionDetected",
-        "name": "Mouvement",
-        "type": "info",
-        "subtype": "binary",
-        "isVisible": 1,
-        "isHistorized": 1,
-        "generic_type": "PRESENCE"
-    },
-    {
-        "logicalId": "personDetected",
-        "name": "Personne detectée",
-        "type": "info",
-        "subtype": "binary",
-        "isVisible": 1,
-        "isHistorized": 1,
-        "generic_type": "PRESENCE"
-    },
-    {
-        "logicalId": "personName",
-        "name": "Identification",
-        "type": "info",
-        "subtype": "string",
-        "isVisible": 0,
-        "isHistorized": 0,
-        "generic_type": "GENERIC_INFO",
-        "template": {
-            "dashboard": "line",
-            "mobile": "line"
-        }
-    },
-    {
-        "logicalId": "rtspStream",
-        "name": "Flux RTSP",
-        "type": "info",
-        "subtype": "string",
-        "isVisible": 0,
-        "isHistorized": 0,
-        "generic_type": "GENERIC_INFO",
-        "template": {
-            "dashboard": "line",
-            "mobile": "line"
-        }
-    },
-    {
-        "logicalId": "wifiRSSI",
-        "name": "Signal Wifi",
-        "type": "info",
-        "subtype": "numeric",
-        "isVisible": 0,
-        "isHistorized": 0,
-        "unite": "dBm",
-        "generic_type": "GENERIC_INFO",
-        "template": {
-            "dashboard": "line",
-            "mobile": "line"
-        }
-    },
-    {
-        "logicalId": "start_rtsp",
-        "name": "Démarrer le flux RTSP",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 1,
-        "generic_type": "CAMERA_PRESET"
-    },
-    {
-        "logicalId": "stop_rtsp",
-        "name": "Arrêter le flux RTSP",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 1,
-        "generic_type": "CAMERA_STOP"
-    },
-    {
-        "logicalId": "away",
-        "name": "Mode absent",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "home",
-        "name": "A la maison",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "disarmed",
-        "name": "Mode désarmé",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "scheduled",
-        "name": "Mode planifié",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "geolocalized",
-        "name": "Mode géolocalisé",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "custom1",
-        "name": "Mode custom 1",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "custom2",
-        "name": "Mode custom 2",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "custom3",
-        "name": "Mode custom 3",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "guardMode",
-        "name": "Mode",
-        "type": "info",
-        "subtype": "other",
-        "isVisible": 1,
-        "generic_type": "GENERIC_INFO"
-    }
+	{
+		"logicalId": "enabled",
+		"name": "Activée",
+		"type": "info",
+		"subtype": "binary",
+		"isVisible": 0,
+		"generic_type": "DONT"
+	},
+	{
+		"logicalId": "motionDetected",
+		"name": "Mouvement",
+		"type": "info",
+		"subtype": "binary",
+		"isVisible": 1,
+		"isHistorized": 1,
+		"generic_type": "PRESENCE"
+	},
+	{
+		"logicalId": "personDetected",
+		"name": "Personne detectée",
+		"type": "info",
+		"subtype": "binary",
+		"isVisible": 1,
+		"isHistorized": 1,
+		"generic_type": "PRESENCE"
+	},
+	{
+		"logicalId": "personName",
+		"name": "Identification",
+		"type": "info",
+		"subtype": "string",
+		"isVisible": 0,
+		"isHistorized": 0,
+		"generic_type": "GENERIC_INFO",
+		"template": {
+			"dashboard": "line",
+			"mobile": "line"
+		}
+	},
+	{
+		"logicalId": "rtspStream",
+		"name": "Flux RTSP",
+		"type": "info",
+		"subtype": "string",
+		"isVisible": 0,
+		"isHistorized": 0,
+		"generic_type": "GENERIC_INFO",
+		"template": {
+			"dashboard": "line",
+			"mobile": "line"
+		}
+	},
+	{
+		"logicalId": "wifiRSSI",
+		"name": "Signal Wifi",
+		"type": "info",
+		"subtype": "numeric",
+		"isVisible": 0,
+		"isHistorized": 0,
+		"unite": "dBm",
+		"generic_type": "GENERIC_INFO",
+		"template": {
+			"dashboard": "line",
+			"mobile": "line"
+		}
+	},
+	{
+		"logicalId": "start_rtsp",
+		"name": "Démarrer le flux RTSP",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 1,
+		"generic_type": "CAMERA_PRESET"
+	},
+	{
+		"logicalId": "stop_rtsp",
+		"name": "Arrêter le flux RTSP",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 1,
+		"generic_type": "CAMERA_STOP"
+	},
+	{
+		"logicalId": "away",
+		"name": "Mode absent",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "home",
+		"name": "A la maison",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "disarmed",
+		"name": "Mode désarmé",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "scheduled",
+		"name": "Mode planifié",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "geolocalized",
+		"name": "Mode géolocalisé",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "custom1",
+		"name": "Mode custom 1",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "custom2",
+		"name": "Mode custom 2",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "custom3",
+		"name": "Mode custom 3",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "guardMode",
+		"name": "Mode",
+		"type": "info",
+		"subtype": "numeric",
+		"isVisible": 1,
+		"generic_type": "GENERIC_INFO"
+	}
 ]

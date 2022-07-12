@@ -1,143 +1,95 @@
 [
-    {
-       "logicalId": "model",
-        "name": "Model",
-        "type": "info",
-        "subtype": "string",
-        "isVisible": 0,
-        "generic_type": "DONT"
-    },
-    {
-         "logicalId": "name",
-          "name": "Nom",
-          "type": "info",
-          "subtype": "string",
-          "isVisible": 0,
-          "generic_type": "DONT"
-    },
-    {
-         "logicalId": "serialNumber",
-          "name": "Numéro de série",
-          "type": "info",
-          "subtype": "string",
-          "isVisible": 0,
-          "generic_type": "DONT"
-    },
-    {
-         "logicalId": "hardwareVersion",
-          "name": "Version hardware",
-          "type": "info",
-          "subtype": "string",
-          "isVisible": 0,
-          "generic_type": "DONT"
-    },
-    {
-         "logicalId": "softwareVersion",
-          "name": "Version du logiciel",
-          "type": "info",
-          "subtype": "string",
-          "isVisible": 0,
-          "generic_type": "DONT"
-    },
-    {
-         "logicalId": "stationSerialNumber",
-          "name": "Numéro de série station",
-          "type": "info",
-          "subtype": "string",
-          "isVisible": 0,
-          "generic_type": "DONT"
-    },
-    {
-         "logicalId": "batteryLow",
-          "name": "Batterie faible",
-          "type": "info",
-          "subtype": "binary",
-          "isVisible": 0,
-          "template": {
-              "dashboard": "line",
-              "mobile": "line"
-          }
-    },
-    {
-         "logicalId": "motionDetected",
-          "name": "Mouvement",
-          "type": "info",
-          "subtype": "binary",
-          "isVisible": 1,
-          "isHistorized": 0,
-          "isInverted": 1,
-          "generic_type": "PRESENCE"
-    },
-    {
-        "logicalId": "away",
-        "name": "Mode absent",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "home",
-        "name": "A la maison",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "disarmed",
-        "name": "Mode désarmé",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "scheduled",
-        "name": "Mode planifié",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "geolocalized",
-        "name": "Mode géolocalisé",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "custom1",
-        "name": "Mode custom 1",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "custom2",
-        "name": "Mode custom 2",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "custom3",
-        "name": "Mode custom 3",
-        "type": "action",
-        "subtype": "other",
-        "isVisible": 0,
-        "generic_type": "ALARM_MODE"
-    },
-    {
-        "logicalId": "guardMode",
-        "name": "Mode",
-        "type": "info",
-        "subtype": "other",
-        "isVisible": 1,
-        "generic_type": "GENERIC_INFO"
-    }
+	{
+		"logicalId": "batteryLow",
+		"name": "Batterie faible",
+		"type": "info",
+		"subtype": "binary",
+		"isVisible": 0,
+		"template": {
+			"dashboard": "line",
+			"mobile": "line"
+		}
+	},
+	{
+		"logicalId": "motionDetected",
+		"name": "Mouvement",
+		"type": "info",
+		"subtype": "binary",
+		"isVisible": 1,
+		"isHistorized": 0,
+		"isInverted": 1,
+		"generic_type": "PRESENCE"
+	},
+	{
+		"logicalId": "away",
+		"name": "Mode absent",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "home",
+		"name": "A la maison",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "disarmed",
+		"name": "Mode désarmé",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "scheduled",
+		"name": "Mode planifié",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "geolocalized",
+		"name": "Mode géolocalisé",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "custom1",
+		"name": "Mode custom 1",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "custom2",
+		"name": "Mode custom 2",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "custom3",
+		"name": "Mode custom 3",
+		"type": "action",
+		"subtype": "other",
+		"isVisible": 0,
+		"generic_type": "ALARM_MODE"
+	},
+	{
+		"logicalId": "guardMode",
+		"name": "Mode",
+		"type": "info",
+		"subtype": "numeric",
+		"isVisible": 1,
+		"generic_type": "GENERIC_INFO"
+	}
 ]

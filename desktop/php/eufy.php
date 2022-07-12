@@ -124,6 +124,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-sm-3 control-label">{{Eufy name}}</label>
+                                    <div class="col-sm-6">
+                                        <span type="text" class="eqLogicAttr label label-default" data-l1key="eufyName"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-3 control-label">{{Modèle}}</label>
                                     <div class="col-sm-6">
                                         <span type="text" class="eqLogicAttr label label-default" data-l1key="configuration" data-l2key="model"></span>
@@ -131,7 +137,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Numéro de série de la station}}</label>
+                                    <label class="col-sm-3 control-label">{{Station}}</label>
                                     <div class="col-sm-6">
                                         <span type="text" class="eqLogicAttr label label-default" data-l1key="configuration" data-l2key="stationSerialNumber"></span>
                                     </div>

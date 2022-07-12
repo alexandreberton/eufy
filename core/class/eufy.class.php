@@ -20,13 +20,7 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class eufy extends eqLogic {
   public static function deamonRunning() {
-
-		//$userId = config::byKey('userId', 'tahoma');
-		//$userPassword = config::byKey('userPassword', 'tahoma');
-
-		//$modules = tahomaGetModules($userId, $userPassword);
-
-		return true;//is_array($modules);
+		return true;
 	}
 
   public static function deamon_info() {
@@ -87,6 +81,11 @@ class eufy extends eqLogic {
         return false;
     }
     message::removeAll(__CLASS__, 'unableStartDeamon');
+
+    // Instanciate the current station mapping
+    //$params = array('command' => 'getDevices');
+    //eufy::sendToDaemon($params);
+
     return true;
   }
 
@@ -113,6 +112,7 @@ class eufy extends eqLogic {
 		socket_close($socket);
   }
 
+
   public static function syncDevices($message){
     $message = str_replace(": True", ": \"True\"", $message);
     $message = str_replace(": False", ": \"False\"", $message);
@@ -125,12 +125,14 @@ class eufy extends eqLogic {
     $jsonObj = json_decode($message);
 
     $deviceId = 0;
+
+    $serialStations = [];
     foreach($jsonObj as $device)
     {
       $eqLogic = eqLogic::byLogicalId($device->serialNumber, __CLASS__);
       
       if (!is_object($eqLogic)) {
-        log::add(__CLASS__, 'info', 'Creating new device:' . $device->$name);
+        log::add(__CLASS__, 'info', 'Creating (' . $device->name . '-' . $device->serialNumber . ')');
         $eqLogic = new self();
         $eqLogic->setLogicalId($device->serialNumber);
        	$eqLogic->setName($device->name);
@@ -138,28 +140,38 @@ class eufy extends eqLogic {
      	  $eqLogic->setEqType_name(__CLASS__);
      	  $eqLogic->setIsEnable(1);
         $eqLogic->setCategory('security', 1);
+        
+        $eqLogic->setConfiguration('eufyName', $device->name);
+        $eqLogic->setConfiguration('model', $device->model);
+        $eqLogic->setConfiguration('serialNumber', $device->serialNumber);
+        $eqLogic->setConfiguration('stationSerialNumber', $device->stationSerialNumber);
+        $eqLogic->setConfiguration('hardwareVersion', $device->hardwareVersion);
+		    $eqLogic->save();
+
+		    $commandsConfig = eufy::getCommandsFileContent(__DIR__ . '/../config/' . $device->model . '.json');
+		    $eqLogic->createCommandsFromConfig($commandsConfig, $jsonObjArray[$deviceId]);
+
+        if(!in_array($device->stationSerialNumber, $serialStations))
+          $serialStations[] = $device->stationSerialNumber;
+
       }
       else{
-        log::add(__CLASS__, 'debug', 'Device already exist: ' . $device->$name);
+        log::add(__CLASS__, 'debug', 'Already exist (' . $device->name . '-' . $device->serialNumber . ')');
       }
 
-      $eqLogic->setConfiguration('model', $device->model);
-      $eqLogic->setConfiguration('serialNumber', $device->serialNumber);
-      $eqLogic->setConfiguration('stationSerialNumber', $device->stationSerialNumber);
-      $eqLogic->setConfiguration('hardwareVersion', $device->hardwareVersion);
-		  $eqLogic->save();
-
-		  $commandsConfig = eufy::getCommandsFileContent(__DIR__ . '/../config/' . $device->model . '.json');
-		  $eqLogic->createCommandsFromConfig($commandsConfig, $jsonObjArray[$deviceId]);
-
-      // Init guard mode
-      $params = array('command' => 'station.get_properties', 'serialNumber' => $device->stationSerialNumber);
-      eufy::sendToDaemon($params);
-		
       $deviceId = $deviceId + 1; 
     }
+
+    eufy::InitGuardModeForStations($serialStations);
   }
 
+  public static function InitGuardModeForStations($stationSerialNumbers){
+    foreach ($stationSerialNumbers as $stationSerialNumber) {      
+      log::add(__CLASS__, 'DEBUG', 'Init guard mode for station ' . $stationSerialNumber);
+      $params = array('command' => 'station.get_properties', 'serialNumber' => $stationSerialNumber);
+      eufy::sendToDaemon($params);
+    }
+  }
   public static function updateDeviceInfo($serialNumber, $property, $value){
     $eqLogic = eqLogic::byLogicalId($serialNumber, __CLASS__);
     if (isset($eqLogic)){
@@ -174,8 +186,20 @@ class eufy extends eqLogic {
       log::add(__CLASS__, 'debug', 'eqLogic is null');
   }
 
-  public static function sendEvent($cmd, $value)
-  {
+  public static function updateDeviceInfoForProperties($stationSerialNumber, $property, $value){
+
+    foreach (self::byType('eufy', true) as $eqLogic) {
+      
+      if($eqLogic->getConfiguration('stationSerialNumber') == $stationSerialNumber){
+        $cmd = $eqLogic->getCmd('info', $property);
+        
+        if (eufy::sendEvent($cmd, $value))
+          log::add(__CLASS__, 'debug', 'device info updated');
+      }
+    }
+  }
+
+  public static function sendEvent($cmd, $value){
     if ($cmd->execCmd() != $cmd->formatValue($value)) {
       $cmd->event($value, null);;
       return true;
@@ -273,59 +297,6 @@ class eufy extends eqLogic {
 			}
 		}
 	}
-
-  /*     * *************************Attributs****************************** */
-
-  /*
-  * Permet de définir les possibilités de personnalisation du widget (en cas d'utilisation de la fonction 'toHtml' par exemple)
-  * Tableau multidimensionnel - exemple: array('custom' => true, 'custom::layout' => false)
-  public static $_widgetPossibility = array();
-  */
-
-  /*
-  * Permet de crypter/décrypter automatiquement des champs de configuration du plugin
-  * Exemple : "param1" & "param2" seront cryptés mais pas "param3"
-  public static $_encryptConfigKey = array('param1', 'param2');
-  */
-
-  /*     * ***********************Methode static*************************** */
-
-  /*
-  * Fonction exécutée automatiquement toutes les minutes par Jeedom
-  public static function cron() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 5 minutes par Jeedom
-  public static function cron5() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 10 minutes par Jeedom
-  public static function cron10() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 15 minutes par Jeedom
-  public static function cron15() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 30 minutes par Jeedom
-  public static function cron30() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les heures par Jeedom
-  public static function cronHourly() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement tous les jours par Jeedom
-  public static function cronDaily() {}
-  */
-
-  /*     * *********************Méthodes d'instance************************* */
 
   // Fonction exécutée automatiquement avant la création de l'équipement
   public function preInsert() {
@@ -428,8 +399,7 @@ class eufyCmd extends cmd {
 
         $params = array('command' => 'device.start_rtsp_livestream', 'serialNumber' => $serialNumber);
         eufy::sendToDaemon($params);
-        break; 
-
+        break;
       case 'stop_rtsp': 
         $params = array('command' => 'device.stop_rtsp_livestream', 'serialNumber' => $serialNumber);
         eufy::sendToDaemon($params);
@@ -468,7 +438,4 @@ class eufyCmd extends cmd {
         break;
     }
   }
-  
-  /*     * **********************Getteur Setteur*************************** */
-
 }
