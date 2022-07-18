@@ -148,8 +148,14 @@ class eufy extends eqLogic {
         $eqLogic->setConfiguration('hardwareVersion', $device->hardwareVersion);
 		    $eqLogic->save();
 
-		    $commandsConfig = eufy::getCommandsFileContent(__DIR__ . '/../config/' . $device->model . '.json');
-		    $eqLogic->createCommandsFromConfig($commandsConfig, $jsonObjArray[$deviceId]);
+        try{
+          $commandsConfig = eufy::getCommandsFileContent(__DIR__ . '/../config/' . $device->model . '.json');
+          $eqLogic->createCommandsFromConfig($commandsConfig, $jsonObjArray[$deviceId]);
+        }
+        catch(Exception $e) {
+          log::add(__CLASS__, 'warning', $e);
+
+        }
 
         if(!in_array($device->stationSerialNumber, $serialStations))
           $serialStations[] = $device->stationSerialNumber;
