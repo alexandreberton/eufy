@@ -17,9 +17,15 @@ try {
     }
 
     if(isset($result['type'])){
+// lxrootard création des types Station et Caméra 
+	if ($result['type'] == 'stations') {
+            log::add('eufy', 'info', 'Stations received from daemon');
+            eufy::syncDevices($result['stations'],'Station');
+        }
+
         if ($result['type'] == 'devices') {
             log::add('eufy', 'info', 'Devices received from daemon');
-            eufy::syncDevices($result['devices']);
+            eufy::syncDevices($result['devices'],'Camera');
         } 
         if ($result['type'] == 'event') {
             log::add('eufy', 'debug', 'Event received from daemon: serialNumber: '. $result['serialNumber'] . ', property: ' . $result['property'] . ', value: ' . $result['value']);          

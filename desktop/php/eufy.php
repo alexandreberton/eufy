@@ -111,24 +111,27 @@ $eqLogics = eqLogic::byType($plugin->getId());
                     <div class="col-sm-5">
                         <form class="form-horizontal">
                             <fieldset>
-                                <!-- <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Modèle}}</label>
-                                    <div class="col-sm-9">
-                                        <img src="core/img/no_image.gif" data-original=".png" id="img_device" class="img-responsive" style="max-height : 240px;margin-top: 10px" />
-                                    </div>
-                                </div> -->
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">{{Numéro de série}}</label>
                                     <div class="col-sm-6">
                                         <span type="text" class="eqLogicAttr label label-default" data-l1key="logicalId"></span>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Eufy name}}</label>
+                                    <label class="col-sm-3 control-label">{{Type Eufy}}</label>
                                     <div class="col-sm-6">
-                                        <span type="text" class="eqLogicAttr label label-default" data-l1key="eufyName"></span>
+                                        <span type="text" class="eqLogicAttr label label-default" data-l1key="configuration" data-l2key="eufyType"></span>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">{{Nom Eufy}}</label>
+                                    <div class="col-sm-6">
+                                        <span type="text" class="eqLogicAttr label label-default" data-l1key="configuration" data-l2key="eufyName"></span>
+                                    </div>
+				</div>
+
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">{{Modèle}}</label>
                                     <div class="col-sm-6">
@@ -147,6 +150,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                     <label class="col-sm-3 control-label">{{Version matérielle}}</label>
                                     <div class="col-sm-6">
                                         <span type="text" class="eqLogicAttr label label-default" data-l1key="configuration" data-l2key="hardwareVersion"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">{{Version logicielle}}</label>
+                                    <div class="col-sm-6">
+                                        <span type="text" class="eqLogicAttr label label-default" data-l1key="configuration" data-l2key="softwareVersion"></span>
                                     </div>
                                 </div>
 

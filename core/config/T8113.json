@@ -1,11 +1,16 @@
 [
 	{
 		"logicalId": "enabled",
-		"name": "Activée",
+		"name": "Caméra activée",
 		"type": "info",
 		"subtype": "binary",
-		"isVisible": 0,
-		"generic_type": "DONT"
+		"isVisible": 1,
+		"generic_type": "DONT",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+
 	},
 	{
 		"logicalId": "motionDetected",
@@ -42,21 +47,21 @@
 		"logicalId": "rtspStream",
 		"name": "Flux RTSP",
 		"type": "info",
-		"subtype": "string",
-		"isVisible": 0,
+		"subtype": "binary",
+		"isVisible": 1,
 		"isHistorized": 0,
 		"generic_type": "GENERIC_INFO",
-		"template": {
-			"dashboard": "line",
-			"mobile": "line"
-		}
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
 	},
 	{
 		"logicalId": "wifiRSSI",
 		"name": "Signal Wifi",
 		"type": "info",
 		"subtype": "numeric",
-		"isVisible": 0,
+		"isVisible": 1,
 		"isHistorized": 0,
 		"unite": "dBm",
 		"generic_type": "GENERIC_INFO",
@@ -65,92 +70,180 @@
 			"mobile": "line"
 		}
 	},
+        {
+                "logicalId": "enableCam",
+                "name": "Activer la Caméra",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_PRESET",
+               	"display": {
+                     "icon": "<i class=\"jeedom-on\"><\/i>"
+                }
+        },
+        {
+                "logicalId": "disableCam",
+                "name": "Désactiver la Caméra",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_PRESET",
+                "display": {
+                     "icon": "<i class=\"jeedom-off\"><\/i>"
+                }
+        },
+        {
+                "logicalId": "enableAntitheft",
+                "name": "Activer la détection Antivol",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_PRESET",
+                "display": {
+                     "icon": "<i class=\"kiko-open-eye\"><\/i>"
+                }
+        },
+        {
+                "logicalId": "disableAntitheft",
+                "name": "Désactiver la détection Antivol",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_PRESET",
+                "display": {
+                     "icon": "<i class=\"kiko-no-eye\"><\/i>"
+                }
+        },
+        {
+                "logicalId": "enableMotionDetection",
+                "name": "Activer la détection de Mouvement",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_PRESET",
+                "display": {
+                     "icon": "<i class=\"loisir-runner5\"><\/i>"
+                }
+
+        },
+        {
+                "logicalId": "disableMotionDetection",
+                "name": "Désactiver la détection de Mouvement",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_PRESET",
+                "display": {
+                     "icon": "<i class=\"fas fa-running\"><\/i>"
+                }
+
+        },
+        {
+                "logicalId": "enableLed",
+                "name": "Activer la LED",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_PRESET",
+                "display": {
+                     "icon": "<i class=\"jeedom-lumiere-on\"><\/i>"
+                }
+
+        },
+        {
+                "logicalId": "disableLed",
+                "name": "Désactiver la LED",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_PRESET",
+                "display": {
+                     "icon": "<i class=\"jeedom-lumiere-off\"><\/i>"
+                }
+
+        },
 	{
 		"logicalId": "start_rtsp",
 		"name": "Démarrer le flux RTSP",
 		"type": "action",
 		"subtype": "other",
 		"isVisible": 1,
-		"generic_type": "CAMERA_PRESET"
+		"generic_type": "CAMERA_RECORD",
+                "display": {
+                     "icon": "<i class=\"fas fa-play\"><\/i>"
+                }
 	},
-	{
-		"logicalId": "stop_rtsp",
-		"name": "Arrêter le flux RTSP",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 1,
-		"generic_type": "CAMERA_STOP"
-	},
-	{
-		"logicalId": "away",
-		"name": "Mode absent",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 0,
-		"generic_type": "ALARM_MODE"
-	},
-	{
-		"logicalId": "home",
-		"name": "A la maison",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 0,
-		"generic_type": "ALARM_MODE"
-	},
-	{
-		"logicalId": "disarmed",
-		"name": "Mode désarmé",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 0,
-		"generic_type": "ALARM_MODE"
-	},
-	{
-		"logicalId": "scheduled",
-		"name": "Mode planifié",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 0,
-		"generic_type": "ALARM_MODE"
-	},
-	{
-		"logicalId": "geolocalized",
-		"name": "Mode géolocalisé",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 0,
-		"generic_type": "ALARM_MODE"
-	},
-	{
-		"logicalId": "custom1",
-		"name": "Mode custom 1",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 0,
-		"generic_type": "ALARM_MODE"
-	},
-	{
-		"logicalId": "custom2",
-		"name": "Mode custom 2",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 0,
-		"generic_type": "ALARM_MODE"
-	},
-	{
-		"logicalId": "custom3",
-		"name": "Mode custom 3",
-		"type": "action",
-		"subtype": "other",
-		"isVisible": 0,
-		"generic_type": "ALARM_MODE"
-	},
-	{
-		"logicalId": "guardMode",
-		"name": "Mode",
-		"type": "info",
-		"subtype": "numeric",
-		"isVisible": 1,
-		"generic_type": "GENERIC_INFO"
-	}
+        {
+                "logicalId": "stop_rtsp",
+                "name": "Arrêter le flux RTSP",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "CAMERA_RECORD",
+                "display": {
+                     "icon": "<i class=\"fas fa-stop\"><\/i>"
+                }
+        },
+        {
+                "logicalId": "battery",
+                "name": "Batterie",
+                "type": "info",
+                "subtype": "numeric",
+                "isVisible": 1,
+		"unite": "%",
+                "generic_type": "BATTERY",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+		}
+        },
+        {
+                "logicalId": "ledStatus",
+                "name": "Etat LED",
+                "type": "info",
+                "subtype": "binary",
+                "isVisible": 1,
+                "generic_type": "CAMERA_RECORD_STATE",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+        },
+        {
+                "logicalId": "antitheftDetection",
+                "name": "Détection Antivol",
+                "type": "info",
+                "subtype": "binary",
+                "isVisible": 1,
+                "generic_type": "CAMERA_RECORD_STATE",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+        },
+        {
+                "logicalId": "motionDetection",
+                "name": "Détection de mouvement",
+                "type": "info",
+                "subtype": "binary",
+                "isVisible": 1,
+                "generic_type": "CAMERA_RECORD_STATE",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+        },
+        {
+                "logicalId": "pictureUrl",
+                "name": "URL snapshot",
+                "type": "info",
+                "subtype": "string",
+                "isVisible": 0,
+                "isHistorized": 0,
+                "generic_type": "GENERIC_INFO",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+        }
 ]
