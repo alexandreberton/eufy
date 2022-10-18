@@ -1,0 +1,115 @@
+[
+
+	{
+		"logicalId": "lanIpAddress",
+		"name": "Adresse IP",
+		"type": "info",
+		"subtype": "string",
+		"isVisible": 1,
+		"generic_type": "GENERIC_INFO",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+	},
+        {
+                "logicalId": "macAddress",
+                "name": "Adresse MAC",
+                "type": "info",
+                "subtype": "string",
+                "isVisible": 1,
+                "generic_type": "GENERIC_INFO",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+        },
+        {
+                "logicalId": "connected",
+                "name": "Connecté",
+                "type": "info",
+                "subtype": "binary",
+                "isVisible": 1,
+                "generic_type": "GENERIC_INFO",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+        },
+	{
+		"logicalId": "guardMode",
+		"name": "Mode",
+		"type": "info",
+		"subtype": "numeric",
+		"isVisible": 1,
+		"generic_type": "ALARM_MODE",
+                "template": {
+                        "dashboard": "line",
+                        "mobile": "line"
+                }
+	},
+        {
+                "logicalId": "away",
+                "name": "Mode absent",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "ALARM_MODE"
+        },
+        {
+                "logicalId": "home",
+                "name": "A la maison",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "ALARM_MODE"
+        },
+        {
+                "logicalId": "disarmed",
+                "name": "Mode désarmé",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "ALARM_MODE"
+        },
+        {
+                "logicalId": "scheduled",
+                "name": "Mode planifié",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 0,
+                "generic_type": "ALARM_MODE"
+        },
+        {
+                "logicalId": "geolocalized",
+                "name": "Mode géolocalisé",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 0,
+                "generic_type": "ALARM_MODE"
+        },
+        {
+                "logicalId": "custom1",
+                "name": "Mode custom1",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 1,
+                "generic_type": "ALARM_MODE"
+        },
+        {
+                "logicalId": "custom2",
+                "name": "Mode custom2",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 0,
+                "generic_type": "ALARM_MODE"
+        },
+        {
+                "logicalId": "custom3",
+                "name": "Mode custom3",
+                "type": "action",
+                "subtype": "other",
+                "isVisible": 0,
+                "generic_type": "ALARM_MODE"
+        }
+]

@@ -23,10 +23,12 @@ try {
         throw new Exception(__('401 - Accès non autorisé', __FILE__));
     }
 	
-	if (init('action') == 'sync') {
-		$params = array('command' => 'getDevices');
-    eufy::sendToDaemon($params);
-    ajax::success();
+    if (init('action') == 'sync') {
+	$params = array('command' => 'getDevices');
+	eufy::sendToDaemon($params);
+	$params = array('command' => 'getStations');
+	eufy::sendToDaemon($params);
+    	ajax::success();
 }
 
   /* Fonction permettant l'envoi de l'entête 'Content-Type: application/json'

@@ -49,6 +49,11 @@ def read_socket():
 		if "command" not in message:
 			return
 
+		if message["command"] == "getStations":
+			logging.info("_stations : " + str(_stations))
+			_jeedomCom.send_change_immediate({'type': 'stations', 'stations': str(_stations)})
+			return
+
 		if message["command"] == "getDevices":
 			logging.info("_devices : " + str(_devices))
 			_jeedomCom.send_change_immediate({'type': 'devices', 'devices': str(_devices)})
@@ -163,12 +168,14 @@ def on_open(ws):
 	Thread(target=run).start()
 
 def parseResultMessage(msg):
+	global _stations
 	global _devices
 	result = msg['result']
 
 	if "state" in result:
 		logging.debug('State message Result received')
-
+		_stations= msg['result']['state']['stations']
+		logging.debug(str(_stations))
 		_devices = msg['result']['state']['devices']
 		logging.debug(str(_devices))
 		return
